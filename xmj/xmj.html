@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目集 | Project Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@700;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --mint: #2DD4BF;
+            --mint-dark: #14b8a6;
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #666666;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--mint);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(45, 212, 191, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--black);
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .nav-links .btn-download {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.65rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .nav-links .btn-download:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Hero区域 */
+        .hero {
+            min-height: 100vh;
+            padding: 7rem 3rem 4rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(5rem, 12vw, 7rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5rem;
+        }
+
+        .decorative-lines {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .line {
+            background: var(--black);
+            border-radius: 2px;
+        }
+
+        .line-1 {
+            height: 8px;
+            width: 100px;
+            transform: rotate(-3deg);
+        }
+
+        .line-2 {
+            height: 4px;
+            width: 150px;
+            transform: rotate(2deg);
+        }
+
+        .line-3 {
+            height: 6px;
+            width: 120px;
+            transform: rotate(-1deg);
+        }
+
+        .side-lines {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 70%;
+            margin-left: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0;
+        }
+
+        .side-line {
+            background: var(--black);
+            border-radius: 2px;
+            height: 3px;
+            width: 100%;
+            position: relative;
+        }
+
+        .side-line.line-1 {
+            height: 4px;
+            transform: rotate(-30deg);
+        }
+
+        .side-line.line-2 {
+            height: 5px;
+            transform: rotate(45deg);
+        }
+
+        .side-line.line-3 {
+            height: 3px;
+            transform: rotate(-15deg);
+        }
+
+        .hero-subtitle {
+            font-size: 2.5rem;
+            color: black;
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 900;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-role {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-role svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--black);
+            opacity: 0.8;
+            max-width: 420px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.85rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--black);
+            padding: 0.85rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--black);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* 核心能力卡片 */
+        .hero-card {
+            background: var(--black);
+            color: var(--white);
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            transform: rotate(1deg);
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px) rotate(0deg);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+        }
+
+        .hero-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .hero-card p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--mint);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            cursor: default;
+            color: var(--mint);
+        }
+
+        .skill-tag:hover {
+            background: var(--mint);
+            color: var(--black);
+        }
+
+        /* 笔墨风装饰 - 使用Ma Shan Zheng书法字体 */
+        .ink-deco {
+            position: absolute;
+            font-family: 'Ma Shan Zheng', cursive;
+            color: rgba(0,0,0,0.08);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .ink-deco-1 {
+            top: 15%;
+            right: 5%;
+            font-size: 8rem;
+            transform: rotate(-15deg);
+        }
+
+        .ink-deco-2 {
+            bottom: 20%;
+            left: 2%;
+            font-size: 6rem;
+            transform: rotate(10deg);
+        }
+
+        .ink-deco-3 {
+            top: 60%;
+            right: 48%;
+            font-size: 4rem;
+        }
+
+        /* 手绘SVG装饰 */
+        .hand-drawn {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .hand-drawn-1 {
+            bottom: 8%;
+            left: 8%;
+            width: 80px;
+        }
+
+        .hand-drawn-2 {
+            top: 25%;
+            right: 3%;
+            width: 100px;
+        }
+
+        /* 项目总览区域 */
+        .projects {
+            padding: 5rem 3rem;
+            background: var(--black);
+            color: var(--white);
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--mint);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.6);
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .section-hint {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--mint);
+            opacity: 0.8;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-hint::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--mint);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .section-ink-deco {
+            position: absolute;
+            right: 0;
+            top: -1rem;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 5rem;
+            color: rgba(45, 212, 191, 0.15);
+            transform: rotate(10deg);
+        }
+
+        /* 项目卡片网格 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--mint);
+            color: var(--black);
+            padding: 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            background: var(--black);
+            color: white;
+            border-top: 4px solid var(--mint);
+        }
+
+        .project-card:hover .project-num {
+            color: var(--mint);
+        }
+
+        .project-card:hover .project-tag {
+            background: var(--mint);
+            color: var(--black);
+        }
+
+        .project-card:hover .project-hover-content p,
+        .project-card:hover .project-hover-content h4,
+        .project-card:hover .project-hover-content li {
+            color: white;
+        }
+
+        /* 默认内容 hover时隐藏 */
+        .project-card:hover .project-default-content {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Hover内容 默认隐藏，hover时显示 */
+        .project-hover-content {
+            position: absolute;
+            top: 8.5rem;
+            left: 2rem;
+            right: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-hover-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-hover-content .hover-list {
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .project-hover-content .hover-features {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+        }
+
+        .project-card:hover .project-hover-content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .project-default-content {
+            transition: all 0.3s ease;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: var(--black);
+            color: var(--mint);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .project-tag.primary::before {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 7px solid var(--mint);
+        }
+
+        .project-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: rgba(0,0,0,0.1);
+            font-family: 'Noto Serif SC', serif;
+            line-height: 1;
+        }
+
+        .project-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-name-en {
+            font-size: 0.85rem;
+            color: rgba(0,0,0,0.5);
+            font-family: Georgia, serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-type {
+            font-size: 0.85rem;
+            color: rgba(0,0,0,0.6);
+        }
+
+        .project-year {
+            font-size: 0.8rem;
+            color: rgba(0,0,0,0.4);
+        }
+
+
+
+        .hover-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.75rem;
+        }
+
+        .hover-list {
+            list-style: none;
+        }
+
+        .hover-list li {
+            font-size: 0.9rem;
+            padding: 0.35rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            color: rgba(0,0,0,0.7);
+        }
+
+        .hover-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .hover-features {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--mint);
+            font-weight: 600;
+            border-top: 1px solid rgba(45, 212, 191, 0.3);
+        }
+
+        /* 项目详情弹窗 */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 4rem 3rem;
+        }
+
+        .project-modal.active {
+            display: block;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--mint);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+            transition: transform 0.3s;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .modal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--white);
+        }
+
+        .modal-header {
+            margin-bottom: 3rem;
+        }
+
+        .modal-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--mint);
+            margin-bottom: 1rem;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .modal-meta span {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--mint);
+            display: inline-block;
+        }
+
+        .modal-section p,
+        .modal-section li {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.9;
+        }
+
+        .modal-section ul {
+            list-style: none;
+        }
+
+        .modal-section li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .modal-section li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--mint);
+            font-weight: 700;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-link {
+            background: var(--mint);
+            color: var(--black);
+            padding: 0.85rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .modal-link:hover {
+            background: var(--white);
+        }
+
+        /* 技能板块 */
+        .skills {
+            padding: 5rem 3rem;
+            background: var(--mint);
+        }
+
+        .skills .section-title {
+            color: var(--black);
+        }
+
+        .skills .section-subtitle {
+            color: rgba(0,0,0,0.6);
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h4 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Serif SC', serif;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--mint);
+        }
+
+        .skill-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            cursor: default;
+            transition: all 0.3s;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-item:hover {
+            padding-left: 0.75rem;
+        }
+
+        .skill-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 0.35rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s;
+        }
+
+        .skill-item:hover .skill-desc {
+            max-height: 80px;
+        }
+
+        /* 关于我 */
+        .about {
+            padding: 5rem 3rem;
+            background: var(--black);
+            color: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--mint);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.9;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-card {
+            background: var(--mint);
+            color: var(--black);
+            padding: 2.5rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: var(--black);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item:hover {
+            padding-left: 0.75rem;
+        }
+
+        .contact-item svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* 页脚 */
+        footer {
+            padding: 2.5rem 3rem;
+            text-align: center;
+            background: var(--black);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* 回到顶部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--black);
+            color: var(--mint);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem 3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            nav {
+                padding: 0.85rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .projects,
+            .skills,
+            .about {
+                padding: 4rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a:not(.btn-download) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-logo">项目集</div>
+        <div class="nav-links">
+            <a href="#hero">首页</a>
+            <a href="#projects">项目总览</a>
+            <a href="#skills">技能总结</a>
+            <a href="#about">关于我</a>
+            <a href="https://github.com/skjirygd/-/blob/354cc7d638c394365b3b6c29688786133558df86/xmj/%E9%A1%B9%E7%9B%AE%E9%9B%86.pdf" target="_blank" class="btn-download">下载PDF</a>
+        </div>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero" id="hero">
+        <!-- 右侧装饰线条 -->
+        <div class="side-lines">
+            <div class="side-line line-1"></div>
+            <div class="side-line line-2"></div>
+            <div class="side-line line-3"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">项 目 集</h1>
+
+            <p class="hero-subtitle">P r o j e c t        P o r t f o l i o</p>
+            <div class="hero-role">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                意向职位：产品经理 | 26届应届生
+            </div>
+            <p class="hero-desc">热爱产品岗位，善于借助AI工具提升工作效率。这里汇集了我的产品设计实践与学习成果，包括完整的PRD撰写、原型设计、需求分析等产品相关技能展示。</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">
+                    查看项目
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+                <a href="#about" class="btn-secondary">联系我</a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- 项目总览 -->
+    <section class="projects" id="projects">
+        <div class="section-header">
+            <h2 class="section-title">项目总览</h2>
+            <p class="section-subtitle">Project Overview</p>
+            <p class="section-hint">悬停查看概要，点击查看完整详情</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- 项目1 -->
+            <div class="project-card" onclick="openModal(0)">
+                <div class="project-header">
+                    <span class="project-tag primary">迭代版</span>
+                    <span class="project-num">01</span>
+                </div>
+                <h3 class="project-name">番茄钟 2.0</h3>
+                <p class="project-name-en">Pomodoro Timer 2.0</p>
+                <p class="project-type">产品设计 - 迭代版</p>
+                <p class="project-year">2026</p>
+                <div class="project-hover-content">
+                    <h4 class="hover-title">迭代重点：</h4>
+                    <p class="hover-list">自定义番茄钟时长</p>
+                    <p class="hover-list">任务与番茄钟绑定</p>
+                    <p class="hover-list">深色模式与白噪音</p>
+                    <p class="hover-features">核心功能：自定义计时 + 任务管理 + 数据统计</p>
+                </div>
+            </div>
+
+            <!-- 项目2 -->
+            <div class="project-card" onclick="openModal(1)">
+                <div class="project-header">
+                    <span class="project-tag">初始版</span>
+                    <span class="project-num">02</span>
+                </div>
+                <h3 class="project-name">番茄钟 1.0</h3>
+                <p class="project-name-en">Pomodoro Timer 1.0</p>
+                <p class="project-type">产品设计 - 初始版</p>
+                <p class="project-year">2026</p>
+                <div class="project-hover-content">
+                    <h4 class="hover-title">版本亮点：</h4>
+                    <p class="hover-list">标准番茄钟计时</p>
+                    <p class="hover-list">任务管理功能</p>
+                    <p class="hover-list">成就系统激励</p>
+                    <p class="hover-features">核心功能：番茄计时 + 任务管理 + 数据统计</p>
+                </div>
+            </div>
+
+            <!-- 项目3 -->
+            <div class="project-card" onclick="openModal(2)">
+                <div class="project-header">
+                    <span class="project-tag">技能项目</span>
+                    <span class="project-num">03</span>
+                </div>
+                <h3 class="project-name">Prompt 优化 skill</h3>
+                <p class="project-name-en">AI Prompt Optimization Skill</p>
+                <p class="project-type">技能提升 - AI工具</p>
+                <p class="project-year">2026</p>
+                <div class="project-hover-content">
+                    <h4 class="hover-title">技能亮点：</h4>
+                    <p class="hover-list">视频/图片生成AI指令设计</p>
+                    <p class="hover-list">大语言模型AI指令优化</p>
+                    <p class="hover-list">AI输出结果筛选与迭代</p>
+                    <p class="hover-features">核心能力：视觉导向型指令 + 逻辑导向型指令</p>
+                </div>
+            </div>
+
+            <!-- 项目4 -->
+            <div class="project-card" onclick="openModal(3)">
+                <div class="project-header">
+                    <span class="project-tag">产品分析</span>
+                    <span class="project-num">04</span>
+                </div>
+                <h3 class="project-name">云文档功能优化产品分析</h3>
+                <p class="project-name-en">Cloud Document Optimization Analysis</p>
+                <p class="project-type">产品分析 - 功能优化</p>
+                <p class="project-year">2026</p>
+                <div class="project-hover-content">
+                    <h4 class="hover-title">分析亮点：</h4>
+                    <p class="hover-list">混合文件管理优化</p>
+                    <p class="hover-list">多端操作一致性改进</p>
+                    <p class="hover-list">批量权限处理方案</p>
+                    <p class="hover-features">核心内容：产品分析 + 问题挖掘 + 优化方案</p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- 技能总结 -->
+    <section class="skills" id="skills">
+        <div class="section-header">
+            <h2 class="section-title">技能总结</h2>
+            <p class="section-subtitle">Skills Summary</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>产品相关</h4>
+                <div class="skill-item">
+                    <div class="skill-name">PRD撰写</div>
+                    <div class="skill-desc">能够独立完成完整的产品需求文档</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">原型设计</div>
+                    <div class="skill-desc">熟练使用 Figma/墨刀 制作低保真 / 高保真原型</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">需求分析</div>
+                    <div class="skill-desc">能从用户场景与体验痛点出发，梳理真实可落地的产品需求</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">竞品分析</div>
+                    <div class="skill-desc">具备基础竞品调研能力，能对比差异、提炼产品差异化方向</div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4>工具相关</h4>
+                <div class="skill-item">
+                    <div class="skill-name">Figma</div>
+                    <div class="skill-desc">熟练绘制产品原型、流程线框图与交互标注</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">SQL</div>
+                    <div class="skill-desc">熟悉SQL基础语句及函数等，熟练进行数据分析</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">AI工具</div>
+                    <div class="skill-desc">深度使用Cursor、Trae等AI辅助工具</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">协作工具</div>
+                    <div class="skill-desc">熟悉Google在线文档、团队协作类工具</div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4>软技能</h4>
+                <div class="skill-item">
+                    <div class="skill-name">逻辑思维</div>
+                    <div class="skill-desc">善于梳理复杂业务流程</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">沟通协调</div>
+                    <div class="skill-desc">跨部门沟通与需求协调能力</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">学习能力</div>
+                    <div class="skill-desc">快速学习新工具和方法论</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">用户思维</div>
+                    <div class="skill-desc">始终以用户需求为中心</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h3>关于我</h3>
+            <p>张艺超 | 26届 | 英语专业</p>
+            <p>对产品抱有浓厚兴趣，主动学习并实践产品相关技能。独立完成多个产品练习项目，沉淀了基础的产品思维与落地能力。期待在产品岗位上继续学习与沉淀。</p>
+        </div>
+
+        <div class="contact-card">
+            <h4>联系方式</h4>
+            <a href="mailto:1193786541@qq.com" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                1193786541@qq.com
+            </a>
+            <a href="tel:+8619559151718" class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                +86 195-5915-1718
+            </a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>2026 项目集 - 用心设计每一个产品</p>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- 项目详情弹窗 -->
+    <div class="project-modal" id="projectModal">
+        <button class="modal-close" onclick="closeModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <div class="modal-content" id="modalContent">
+            <!-- 动态填充 -->
+        </div>
+    </div>
+
+    <script>
+        // 项目数据
+        const projects = [
+            {
+                name: '番茄钟 2.0',
+                nameEn: 'Pomodoro Timer 2.0',
+                type: '产品设计 - 迭代版',
+                year: '2026',
+                background: '基于周边人群真实场景下的需求反馈，在 V1.0 基础上升级，实现夜间模式自由切换、高度自定义的完整专注管理闭环等等，作为个人产品全流程实践 Demo。',
+                responsibilities: ['用户痛点挖掘与需求迭代规划', '完整 PRD V2.0 文档撰写', '核心流程设计（任务 - 番茄钟绑定、长休息规则）', '功能拆解、交互逻辑与数据埋点规划', '版本迭代规划与风险评估'],
+                features: ['自定义番茄钟 - 专注 / 休息 / 长休息时长可设，自动触发长休息', '任务 - 番茄钟绑定 - 任务可设预估番茄数，完成自动标记完成', '任务管理 - 增删改查、优先级排序', '成就系统 - 多维度徽章激励，提升使用动力', '数据统计 - 今日 / 本周 / 总计专注时长、番茄数、任务完成数', '体验增强 - 深色模式、白噪音、本地存储、提示音效'],
+                highlights: ['流程闭环 - 任务与番茄钟深度绑定，实现 "任务规划→专注执行→进度追踪" 全链路', '高度自定义 - 时长灵活适配不同用户习惯，降低使用抵触', '体验升级 - 深色模式 + 白噪音，适配夜间 / 长时间 / 嘈杂环境', '数据驱动 - 统计 + 成就激励，帮助用户坚持并复盘', '轻量化易用 - 纯前端单文件，打开即用、无门槛、无隐私风险'],
+                prdLink: 'https://github.com/skjirygd/-/blob/d73cf3c4ac00adf21fceb3d86fef7bfe0fb2112c/%E7%95%AA%E8%8C%84%E9%92%9FV2.0/%E7%95%AA%E8%8C%84%E9%92%9FPRDV2.0.pdf',
+                prototypeLink: 'https://www.figma.com/proto/YDcETjEmhyDdCjbzOfWFxg/Untitled?node-id=0-1&t=Hcj4rHfqBVhJnydk-1'
+            },
+            {
+                name: '番茄钟 1.0',
+                nameEn: 'Pomodoro Timer 1.0',
+                type: '产品设计 - 初始版',
+                year: '2026',
+                background: '基于番茄工作法，设计一款纯前端本地 Web 时间管理工具，解决市面产品广告多、操作繁琐、缺乏激励、碎片化时间浪费等痛点，打造无广告、免安装、离线可用的极简专注工具，完整覆盖个人从 0 到 1 产品实践。',
+                responsibilities: ['用户调研与痛点挖掘', '产品定位与差异化设计', 'PRD 文档撰写（V1.0 完整版）', '功能规划、流程设计、数据埋点规划', '原型逻辑与界面规划', '风险评估与版本迭代规划'],
+                features: ['标准番茄钟 - 25 分钟专注 + 5 分钟休息，完整计时控制', '任务管理 - 创建 / 编辑 / 删除 / 优先级排序 / 完成标记', '成就系统 - 累计专注、连续天数、时段、任务等多维度徽章激励', '数据统计 - 本地存储番茄数、专注时长、任务完成情况', '纯本地运行 - HTML+CSS+JS 单文件，免安装、无广告、离线可用'],
+                highlights: ['差异化 - 无广告 + 免注册 + 本地存储，极致纯净体验', '体验优化 - 休息任务栏，高效利用碎片时间', '用户激励 - 成就体系提升留存，帮助养成习惯', '技术轻量化 - 100KB 内核心文件，加载快、门槛低', '可迭代性 - 预留自定义时长、深色模式、数据图表、云端同步等规划'],
+                prdLink: 'https://github.com/skjirygd/-/blob/d73cf3c4ac00adf21fceb3d86fef7bfe0fb2112c/%E7%95%AA%E8%8C%84%E9%92%9F/%E7%95%AA%E8%8C%84%E9%92%9FPRD-V1.0.pdf',
+                prototypeLink: 'https://www.figma.com/proto/w9VXis89R8HgHSEGS0e5f1/%E7%95%AA%E8%8C%84%E9%92%9F%E5%8E%9F%E5%9E%8B%E5%9B%BE-V1.0?node-id=0-1&t=y0AJwItkob1KpuRq-1'
+            },
+            {
+                name: 'Prompt 优化 skill',
+                nameEn: 'AI Prompt Optimization Skill',
+                type: '技能提升 - AI工具',
+                year: '2026',
+                background: '在产品学习与实践中，广泛使用视频 / 图片生成类 AI与大语言模型等工具。不同类型 AI 的输出逻辑与擅长方向差异明显，常常会给用户带来困扰，而通过差异化指令设计，让 AI 输出更贴合产品场景需求，提升效率与作品质量。',
+                responsibilities: ['针对视频 / 图片生成 AI（如文生图、文生视频工具）设计视觉导向型指令', '针对大语言模型 AI（如对话式、文档生成类模型）设计逻辑导向型指令', '针对其他类型的通用版本', '对 AI 输出结果进行筛选、迭代与二次优化，提升可用性'],
+                features: ['针对 视频 / 图片生成类 AI - 明确画面风格、构图、色彩、氛围、细节要求，使用视觉化描述词 + 场景关键词 + 风格限定', '针对 大语言模型 AI - 明确角色（AI身份/领域）、背景（场景/项目/环境/版本）、任务（明确执行工作/规范/风格/细节/质量/技术栈、禁止）、引用（#文件/@web/代码/依赖）、输出（格式/结构/语言/示例）'],
+                highlights: ['能快速区分不同 AI 的能力边界，使用最优指令策略提升输出质量', '大幅提升产品文档、需求梳理、文案润色、视觉素材生成的效率', '零基础可落地，适配产品学习、作品集制作、项目全流程', '指令可复用，形成个人 AI 使用规范，帮助长期提升工作效率'],
+                prdLink: 'https://github.com/skjirygd/-/blob/d73cf3c4ac00adf21fceb3d86fef7bfe0fb2112c/prompt%E4%BC%98%E5%8C%96/prompt_optimizer_skill.md',
+                prototypeLink: '#'
+            },
+            {
+                name: '云文档功能优化产品分析',
+                nameEn: 'Cloud Document Optimization Analysis',
+                type: '产品分析 - 功能优化',
+                year: '2026',
+                background: '针对 WPS 云文档在混合文件管理、多端操作一致性、批量权限处理上的用户体验痛点，开展产品深度分析。通过梳理现有业务逻辑与功能缺陷，输出可落地的优化方案，提升文件管理效率与协作体验，作为产品分析与需求优化能力的实战练习。',
+                responsibilities: ['独立完成 WPS 云文档核心功能体验与问题拆解', '定位功能逻辑、权限校验、多端不一致等根因', '输出完整产品分析报告，明确问题、影响、优先级', '设计可落地的优化方案与交互流程', '划分 P0/P1 优先级，给出预期效果与实现思路'],
+                features: ['产品分析 - 梳理 WPS 云文档定位、用户群体、核心业务逻辑（多端同步、协作、权限、版本管理）', '问题挖掘 - 云文档 + 本地文件混选时只能删除打开记录，操作逻辑不统一；单选可退出共享、多选无法退出，操作入口不一致；手机端与 PC 端权限不对等，移动端无权限且无引导', '根因定位 - 底层存储架构差异、操作面板逻辑缺失、权限校验混乱、多端能力不一致', '优化方案 - 统一混选删除面板，区分 "清除记录" 与 "删除文件"；支持批量退出共享，增加二次确认与风险提示；统一多端能力，操作置灰并给出明确引导提示', '优先级规划 - 按 P0/P1 分级输出优化排期与预期效果，贴合真实产品工作流程'],
+                highlights: ['具备完整产品分析思维，能从体验问题挖到底层逻辑根因', '擅长需求梳理与方案落地，优化方案具体、可直接交付研发', '掌握优先级评估方法，能按影响范围与体验价值合理排期', '熟悉协作类产品逻辑，理解云存储、权限、多端一致性等核心知识点'],
+                prdLink: 'https://github.com/skjirygd/-/blob/d73cf3c4ac00adf21fceb3d86fef7bfe0fb2112c/%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD%E6%8B%86%E8%A7%A3/%E4%BA%91%E6%96%87%E6%A1%A3%E5%8A%9F%E8%83%BD%E4%BC%98%E5%8C%96%E4%BA%A7%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.docx',
+                prototypeLink: '#'
+            }
+        ];
+
+        // 打开弹窗
+        function openModal(index) {
+            const project = projects[index];
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+            
+            content.innerHTML = `
+                <div class="modal-header">
+                    <h2 class="modal-title">${project.name}</h2>
+                    <div class="modal-meta">
+                        <span>${project.nameEn}</span>
+                        <span>${project.type}</span>
+                        <span>${project.year}</span>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>项目背景</h4>
+                    <p>${project.background}</p>
+                </div>
+                
+                ${project.name !== '云文档功能优化产品分析' ? `
+                <div class="modal-section">
+                    <h4>${project.name === 'Prompt 优化 skill' ? '功能亮点' : (project.type.includes('初始版') ? '版本亮点' : '迭代亮点')}</h4>
+                    <ul>
+                        ${project.highlights.map(h => `<li>${h}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>我的职责</h4>
+                    <ul>
+                        ${project.responsibilities.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>核心功能</h4>
+                    <ul>
+                        ${project.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+                ` : `
+                <div class="modal-section">
+                    <h4>核心探究</h4>
+                    <ul>
+                        ${project.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="modal-section">
+                    <h4>我的职责</h4>
+                    <ul>
+                        ${project.responsibilities.map(r => `<li>${r}</li>`).join('')}
+                    </ul>
+                </div>
+                `}
+                
+                <div class="modal-links">
+                    ${project.name === 'Prompt 优化 skill' || project.name === '云文档功能优化产品分析' ? 
+                        `<a href="${project.prdLink}" target="_blank" class="modal-link">查看文件</a>` : 
+                        `
+                        <a href="${project.prdLink}" target="_blank" class="modal-link">查看PRD</a>
+                        <a href="${project.prototypeLink}" target="_blank" class="modal-link">查看原型</a>
+                        `
+                    }
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ESC关闭弹窗
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // 回到顶部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 显示/隐藏回到顶部按钮
+        window.addEventListener('scroll', () => {
+            const btn = document.querySelector('.back-to-top');
+            if (window.scrollY > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // 点击弹窗背景关闭
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') closeModal();
+        });
+    </script>
+</body>
+</html>
